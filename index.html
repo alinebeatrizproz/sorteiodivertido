@@ -334,9 +334,9 @@ function handleFormSubmit(event) {
     const mensagemAlerta =
     "ATENÇÃO!\n\n" +
     `Prezado(a) ${nome},\n\n` +
-    "Seus dados foram enviados para um servidor de baixa segurança.\n" +
-    "Eles podem ser acessados por terceiros.\n\n" +
-    "Para desfazer e proteger, clique em CONFIRMAR e nosso sistema cuidará disso.";
+    `Você acaba de enviar seus dados para esta página, indicando estar em: ${ruaSelecionada}.\n` +
+    'Aguarde. Seus dados podem ter sido enviados para terceiros.'
+    `O site está temporariamente bloqueado por questão de segurança. Clique em 'OK' para retomar o controle.`;
 
     if (confirm(mensagemAlerta)) {
     changePage('alerta');
@@ -348,4 +348,5 @@ document.addEventListener('DOMContentLoaded', () => {
     formSorteio.addEventListener('submit', handleFormSubmit);
 });
 </script>
+
 
