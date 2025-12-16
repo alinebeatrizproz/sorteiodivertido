@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 MEGA SORTEIO - Não Perca Esta Chance! 🎉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ======================================= */
+        /* VARIÁVEIS DE COR E TIPOGRAFIA VIBRANTES */
+        /* ======================================= */
+        :root {
+            --cor-primaria: #ffc107; /* Amarelo Vibrante (Dourado) */
+            --cor-secundaria: #6f42c1; /* Roxo Profundo */
+            --cor-botao: #007bff; /* Azul Elétrico */
+            --cor-fundo-page: linear-gradient(135deg, #a361f3 0%, #2947a5 100%);
+            --cor-alerta: #dc3545; /* Vermelho de Alerta */
+            --cor-texto: #333;
+            --cor-fundo-card: #ffffff;
+            --sombra-card: 0 20px 50px rgba(0, 0, 0, 0.3);
+            --transicao-rapida: all 0.3s ease;
+            --fonte-titulo: 'Poppins', sans-serif;
+        }
+
+        /* ======================================= */
+        /* ESTRUTURA E FUNDO */
+        /* ======================================= */
+        body {
+            font-family: var(--fonte-titulo);
+            background: var(--cor-fundo-page);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: var(--cor-texto);
+            overflow: hidden; /* Para não mostrar scroll durante a animação inicial */
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 193, 7, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
+
+        main.container {
+            background: var(--cor-fundo-card);
+            padding: 40px;
+            border-radius: 18px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: var(--sombra-card);
+            text-align: center;
+            transition: var(--transicao-rapida);
+            position: relative;
+            animation: fadeIn 0.8s ease-out, pulse 2s infinite; /* Efeito de pulsação na página 1 */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ======================================= */
+        /* GERENCIAMENTO DE PÁGINAS (INTERAÇÃO) */
+        /* ======================================= */
+        .page-content {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-content.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+            position: static;
+        }
+
+        /* ======================================= */
+        /* ESTILOS DE COMPONENTES */
+        /* ======================================= */
+        h1 {
+            color: var(--cor-secundaria);
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            font-weight: 800;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+        }
+
+        .cta-text {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .premio {
+            background: var(--cor-primaria); /* Fundo Amarelo (Dourado) */
+            color: var(--cor-secundaria); /* Texto Roxo */
+            border-radius: 12px;
+            padding: 25px 20px;
+            margin: 25px 0;
+            font-size: 1.15em;
+            line-height: 1.5;
+            box-shadow: 0 8px 15px rgba(255, 193, 7, 0.5); /* Sombra Amarela Forte */
+            border: 3px solid #ff9800;
+        }
+
+        .premio strong {
+            display: block;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            font-size: 1.05em;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--cor-botao);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            background: var(--cor-botao);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: var(--transicao-rapida);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
+        }
+
+        
+/* Adicione este bloco no seu CSS */
+select {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    font-size: 1.05em;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none; /* Remove a aparência padrão do sistema operacional */
+    background-color: #fff;
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: var(--cor-botao);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+/* Opcional: Estilo para esconder a label visualmente (apenas para leitores de tela) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+        /* ======================================= */
+        /* PÁGINAS DE ALERTA E CONSCIENTIZAÇÃO */
+        /* ======================================= */
+        .alerta-header {
+            color: var(--cor-alerta);
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .text-alerta {
+            color: var(--cor-alerta);
+            font-weight: 700;
+        }
+        
+        .rodape {
+            font-size: 0.9em;
+            color: #777;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<main class="container">
+
+    <section class="page-content active" data-page="sorteio">
+        <article>
+            <h1>🚨 ÚLTIMA CHANCE! Se inscreva agora! 🚨</h1>
+            <p class="cta-text">Você escaneou o nosso qrcode premiado!
+                Confirme sua participação agora:</p>
+
+            <div class="premio">
+                <strong>PRÊMIOS DO SORTEIO</strong>
+                <span>🎁 Cesta de Chocolates </span>
+                <span>💰 R$ 100,00 em PIX Garantido</span>
+                <span style="font-size:0.9em; margin-top: 5px; display: block;">Vagas limitadas!</span>
+            </div>
+
+            <form id="form-sorteio">
+                <input type="text" id="nome" placeholder="Seu Nome Completo (Obrigatório)" required aria-label="Nome completo" />
+                <label for="rua" class="sr-only">Selecione sua localização!</label>
+<select id="rua" required aria-label="Rua Principal no Centro de Belo Horizonte">
+    <option value="" disabled selected>Qual a sua localização?</option>
+    <option value="Rua Espírito Santo">Rua Espírto Santo</option>
+    <option value="Rua da Bahia">Rua da Bahia</option>
+    <option value="Avenida Afonso Pena">Avenida Afonso Pena</option>
+    <option value="Rua Rio de Janeiro">Rua Rio de Janeiro</option>
+    <option value="Avenida Amazonas">Avenida Amazonas</option>
+    <option value="Rua dos Tupinambás">Rua dos Tupinambás</option>
+    <option value="Rua dos Carijós">Rua dos Carijós</option>
+    <option value="Praça Sete">Praça Sete (Cruzamento)</option>
+    <option value="Rua São Paulo">Rua São Paulo</option>
+</select>
+
+                <button type="submit">CLIQUE AQUI PARA CONCORRER!</button>
+            </form>
+
+            <footer class="rodape">
+                Regras e Termos | Seus dados serão processados em até 2 MINUTOS.
+            </footer>
+        </article>
+    </section>
+
+    <section class="page-content" data-page="alerta">
+        <article>
+            <h1 class="alerta-header">⚠️ AVISO! ⚠️</h1>
+            <p>
+                CUIDADO AO INSERIR SEUS DADOS ASITES DESCONHECIDOS.
+            </p>
+            <p style="font-size: 1.1em;">
+                Em uma fraude de <span class="text-alerta">phishing</span>, seus dados seriam agora utilizados para golpes de engenharia social.
+                Para evitar este acontecimento, por favor clique no botão abaixo.
+            </p>
+            <button onclick="changePage('conscientizacao')">PROSSEGUIR PARA DICAS DE SEGURANÇA</button>
+        </article>
+    </section>
+
+    <section class="page-content" data-page="conscientizacao">
+        <article>
+            <h1>🛡️ Como se Proteger de Sites Falsos</h1>
+            <p>
+                Aprenda com esta Simulação: Golpistas investem em design para parecerem legítimos.
+            </p>
+            <p>
+                1. Desconfie da Urgência:"Última Chance", "Ganhe Agora" são táticas para você não pensar e te motivar a se inscrever.
+            </p>
+            <p>
+                2. Verifique o Endereço: Se a URL não for a oficial da marca, feche o site.
+            </p>
+            <p>
+                3. Dados Sensíveis:Nunca dê Nome Completo, CPF, Endereço ou senhas em sites de promoção ou sites não confiaveis.
+            </p>
+            <p style="margin-top: 20px;">
+                <strong class="text-alerta">Mantenha-se seguro e avise seus amigos!</strong>
+            </p>
+        </article>
+    </section>
+
+</main>
+
+<script>
+const pages = document.querySelectorAll('.page-content');
+const formSorteio = document.getElementById('form-sorteio');
+
+function changePage(targetPage) {
+    pages.forEach(page => {
+    if (page.getAttribute('data-page') === targetPage) {
+        page.classList.add('active');
+        document.querySelector('.container').style.animation = 'fadeIn 0.8s ease-out';
+    } else {
+        page.classList.remove('active');
+    }
+    });
+}
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('nome').value || "Participante";
+    const cidade = document.getElementById('rua').value || "Local não informado";
+
+    document.getElementById('nome').value = '';
+    document.getElementById('rua').value = '';
+
+    const mensagemAlerta =
+    "ATENÇÃO!\n\n" +
+    `Prezado(a) ${nome},\n\n` +
+    "Seus dados foram enviados para um servidor de baixa segurança.\n" +
+    "Eles podem ser acessados por terceiros.\n\n" +
+    "Para desfazer e proteger, clique em CONFIRMAR e nosso sistema cuidará disso.";
+
+    if (confirm(mensagemAlerta)) {
+    changePage('alerta');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    changePage('sorteio');
+    formSorteio.addEventListener('submit', handleFormSubmit);
+});
+</script>
